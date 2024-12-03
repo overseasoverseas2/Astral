@@ -34,6 +34,7 @@ defmodule Astral.MixProject do
     [
       {:phoenix, "~> 1.7.14"},
       {:phoenix_ecto, "~> 4.5"},
+      {:httpoison, "~> 1.8"},
       {:ecto_sql, "~> 3.10"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 4.1"},
@@ -51,6 +52,7 @@ defmodule Astral.MixProject do
        app: false,
        compile: false,
        depth: 1},
+       {:joken, "~> 2.4"},
       {:swoosh, "~> 1.5"},
       {:finch, "~> 0.13"},
       {:telemetry_metrics, "~> 1.0"},

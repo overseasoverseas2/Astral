@@ -7,8 +7,7 @@ defmodule AstralWeb.DataController do
     |> json(%{})
   end
 
-
-   def versioncheck(conn, _params) do
+  def versioncheck(conn, _params) do
     conn
     |> put_status(200)
     |> json(%{
@@ -37,7 +36,7 @@ defmodule AstralWeb.DataController do
     ])
   end
 
- def enabled(conn, _params) do
+  def enabled(conn, _params) do
     conn
     |> put_status(200)
     |> json([])
@@ -52,22 +51,22 @@ defmodule AstralWeb.DataController do
     })
   end
 
- def access(conn, _params) do
+  def access(conn, _params) do
     conn
     |> put_status(204)
     |> json(%{})
   end
 
-def waiting_room(conn, _params) do
+  def waiting_room(conn, _params) do
     conn
-    |> put_status(:no_content) 
-    |> json([]) 
+    |> put_status(:no_content)
+    |> json([])
   end
 
-    def waitingroom(conn, _params) do
+  def waitingroom(conn, _params) do
     conn
-    |> put_status(:no_content) 
-    |> json([]) 
+    |> put_status(:no_content)
+    |> json([])
   end
 
   def tryplayonplatform(conn, _params) do

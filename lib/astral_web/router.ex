@@ -20,6 +20,94 @@ defmodule AstralWeb.Router do
     get "/", PageController, :home
   end
 
+scope "/fortnite/api", AstralWeb do
+  pipe_through :api
+
+
+  post "/game/v2/tryPlayOnPlatform/account/:accountId", DataController, :tryplayonplatform
+  get "/versioncheck", DataController, :versioncheck
+  get "/v2/versioncheck", DataController, :versioncheck
+  get "/v2/versioncheck/*path", DataController, :versioncheck
+  get "/cloudstorage/user/*path", DataController, :access
+  post "/game/v2/grant_access/*path", DataController, :access
+  put "/cloudstorage/user/:accountId/ClientSettings.Sav", DataController, :access
+  get "/game/v2/twitch/*path", DataController, :access
+  get "/calendar/v1/timeline", TimelineController, :timeline
+end
+
+scope "/fortnite/api/storefront/v2", AstralWeb do
+  pipe_through :api
+
+  get "/keychain", StorefrontController, :keychain
+end
+
+scope "/datarouter/api/v1/public", AstralWeb do
+    pipe_through :api
+
+    post "/data", DataController, :datarouter
+ end
+
+  scope "/lightswitch/api", AstralWeb do
+    pipe_through :api
+
+    get "/service/bulk/status", DataController, :lightswitch
+ end
+
+  scope "/socialban/api", AstralWeb do
+    pipe_through :api
+
+    get "/public/v1/:accountId/ban", DataController, :socialban
+  end
+
+
+  scope "/account/api", AstralWeb do
+    pipe_through :api
+
+    
+    delete "/oauth/sessions", DataController, :enabled
+    delete "/oauth/sessions/*path", DataController, :enabled
+    get "/oauth/verify", DataController, :enabled
+  end
+
+scope "/waitingroom/api", AstralWeb do
+  get "/waitingroom", WaitingRoomController, :waiting_room
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   # Other scopes may use custom stacks.
   # scope "/api", AstralWeb do
   #   pipe_through :api

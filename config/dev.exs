@@ -3,9 +3,9 @@ import Config
 # Configure your database
 config :astral, Astral.Repo,
   username: "postgres",
-  password: "3573",
+  password: "passwordhere",
   hostname: "localhost",
-  database: "elixir",
+  database: "astral_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

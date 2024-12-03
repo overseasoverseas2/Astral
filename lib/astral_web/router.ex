@@ -70,7 +70,7 @@ scope "/datarouter/api/v1/public", AstralWeb do
   end
 
 scope "/waitingroom/api", AstralWeb do
-  get "/waitingroom", WaitingRoomController, :waiting_room
+  get "/waitingroom", DataController, :waitingroom
 end
 
 

@@ -63,7 +63,13 @@ def waiting_room(conn, _params) do
     |> put_status(:no_content) 
     |> json([]) 
   end
-  
+
+    def waitingroom(conn, _params) do
+    conn
+    |> put_status(:no_content) 
+    |> json([]) 
+  end
+
   def tryplayonplatform(conn, _params) do
     conn
     |> put_status(200)

@@ -23,7 +23,6 @@ defmodule AstralWeb.Router do
 scope "/fortnite/api", AstralWeb do
   pipe_through :api
 
-
   post "/game/v2/tryPlayOnPlatform/account/:accountId", DataController, :tryplayonplatform
   get "/versioncheck", DataController, :versioncheck
   get "/v2/versioncheck", DataController, :versioncheck
@@ -63,7 +62,7 @@ scope "/datarouter/api/v1/public", AstralWeb do
   scope "/account/api", AstralWeb do
     pipe_through :api
 
-    
+
     delete "/oauth/sessions", DataController, :enabled
     delete "/oauth/sessions/*path", DataController, :enabled
     get "/oauth/verify", DataController, :enabled

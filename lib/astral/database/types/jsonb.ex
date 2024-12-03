@@ -3,6 +3,8 @@ defmodule Astral.Database.Types.Jsonb do
 
   def type, do: :map
 
+  # kinda just turns a map into a jsonb
+
   def cast(value) do
     case value do
       %{} -> {:ok, value}

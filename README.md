@@ -7,3 +7,13 @@
 </a>
 
 ![BANNER IMAGE](https://cdn2.unrealengine.com/17br-cosmic-summer-announce-newsheader-1900x600-1900x600-a4e90a9a1a70.jpg)
+## Features:
+
+- [x] Notting 💔💔💔💔💔
+
+## To Do:
+
+
+- [ ] Automatic Item Shops
+- [ ] Challenges
+- [ ] Battle Pass

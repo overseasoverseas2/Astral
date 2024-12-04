@@ -91,9 +91,13 @@ defmodule AstralDiscord.Interactions.Register do
 
     %{
       type: InteractionCallbackType.channel_message_with_source(),
-      data: %{embeds: [embed]}
+      data: %{
+        embeds: [embed],
+        flags: 64
+      }
     }
   end
+
 
   defp get_option_value(options, name) do
     options

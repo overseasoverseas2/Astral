@@ -93,7 +93,7 @@ defmodule Astral.Lib.Errors.ApiError do
   end
 end
 
-defmodule Astral do
+defmodule Errors do
   def proxy do
     %{
       fetch_error:

@@ -1,14 +1,14 @@
 defmodule AstralWeb.AccountController do
   use AstralWeb, :controller
   alias Astral.Repo
-  alias Astral
+  alias Errors
   alias Astral.Database.Tables.{Accounts}
 
   def public(conn, %{"accountId" => account_id}) do
     case Accounts |> Repo.get_by(account_id: account_id) do
       nil ->
         error_details =
-          Astral.account()
+          Errors.account()
           |> Map.get(:account_not_found)
 
         conn
@@ -30,7 +30,7 @@ defmodule AstralWeb.AccountController do
     case Accounts |> Repo.get_by(account_id: account_id) do
       nil ->
         error_details =
-          Astral.account()
+          Errors.account()
           |> Map.get(:account_not_found)
 
         conn

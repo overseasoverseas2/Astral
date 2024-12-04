@@ -3,7 +3,7 @@ defmodule AstralWeb.ProfileController do
   import Ecto.Query, only: [from: 2]
   alias Astral.Repo
   alias Astral.Database.Tables.{Profiles, Items}
-  alias Astral
+  alias Errors
   import Logger
 
   def queryprofile(conn, %{"accountId" => account_id}) do
@@ -93,7 +93,7 @@ defmodule AstralWeb.ProfileController do
       |> json(response)
     else
       error_details =
-        Astral.mcp()
+        Errors.mcp()
         |> Map.get(:template_not_found)
 
       conn

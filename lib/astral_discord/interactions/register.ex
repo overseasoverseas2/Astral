@@ -42,7 +42,7 @@ defmodule AstralDiscord.Interactions.Register do
 
   @impl Behaviour
   @spec handle_interaction(Interaction.t(), Behaviour.interaction_options()) :: map()
-  def handle_interaction(interaction, options) do
+  def handle_interaction(_interaction, options) do
     username = get_option_value(options, "username")
     email = get_option_value(options, "email")
     password = get_option_value(options, "password")

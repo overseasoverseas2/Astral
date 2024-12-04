@@ -3,7 +3,7 @@ defmodule AstralWeb.TokenController do
   alias Astral.Repo
   alias Astral.Database.Tables.{Accounts, Tokens}
   alias Joken
-  alias Astral
+  alias Errors
   import Ecto.Query
 
   @token_expiry 28800
@@ -77,17 +77,17 @@ defmodule AstralWeb.TokenController do
                   displayName: user.username
                 })
               else
-                error_details =
-                  Astral.authentication()
-                  |> Map.get(:invalid_token)
-
-                conn
-                |> put_status(:not_found)
-                |> json(error_details)
+                _error ->
+                  error_details =
+                    Errors.basic()
+                    |> Map.get(:general_error)
+                  conn
+                  |> put_status(:internal_server_error)
+                  |> json(error_details)
               end
             else
               error_details =
-                Astral.account()
+                Errors.account()
                 |> Map.get(:invalid_credentials)
 
               conn
@@ -97,14 +97,13 @@ defmodule AstralWeb.TokenController do
 
           nil ->
             error_details =
-              Astral.account()
+              Errors.account()
               |> Map.get(:account_not_found)
 
             conn
             |> put_status(:not_found)
             |> json(error_details)
-          end
-
+        end
       "client_credentials" ->
         claims = %{
           "sub" => params["client_id"],
@@ -189,7 +188,7 @@ defmodule AstralWeb.TokenController do
 
               _ ->
                 error_details =
-                  Astral.account()
+                  Errors.account()
                   |> Map.get(:account_not_found)
 
                 conn
@@ -199,7 +198,7 @@ defmodule AstralWeb.TokenController do
 
           [] ->
             error_details =
-              Astral.authentication.oauth()
+              Errors.authentication.oauth()
               |> Map.get(:invalid_refresh)
 
             conn
@@ -208,7 +207,7 @@ defmodule AstralWeb.TokenController do
 
           _ ->
             error_details =
-              Astral.authentication.oauth()
+              Errors.authentication.oauth()
               |> Map.get(:invalid_refresh)
 
             conn
@@ -271,7 +270,7 @@ defmodule AstralWeb.TokenController do
 
               _ ->
                 error_details =
-                  Astral.account()
+                  Errors.account()
                   |> Map.get(:account_not_found)
 
                 conn
@@ -281,7 +280,7 @@ defmodule AstralWeb.TokenController do
 
           _ ->
             error_details =
-              Astral.authentication.oauth()
+              Errors.authentication.oauth()
               |> Map.get(:invalid_refresh)
 
             conn
@@ -318,7 +317,7 @@ defmodule AstralWeb.TokenController do
               })
             else
               error_details =
-                Astral.authentication.oauth()
+                Errors.authentication.oauth()
                 |> Map.get(:invalid_refresh)
 
               conn
@@ -328,7 +327,7 @@ defmodule AstralWeb.TokenController do
 
           _ ->
             error_details =
-              Astral.account()
+              Errors.account()
               |> Map.get(:account_not_found)
 
             conn
@@ -337,7 +336,7 @@ defmodule AstralWeb.TokenController do
             end
       _ ->
         error_details =
-          Astral.authentication()
+          Errors.authentication()
           |> Map.get(:wrong_grant_type)
 
         conn

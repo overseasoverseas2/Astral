@@ -9,11 +9,25 @@
 ![BANNER IMAGE](https://cdn2.unrealengine.com/17br-cosmic-summer-announce-newsheader-1900x600-1900x600-a4e90a9a1a70.jpg)
 ## Features:
 
-- [x] Notting 💔💔💔💔💔
+- Lobby Support
 
 ## To Do:
-
 
 - [ ] Automatic Item Shops
 - [ ] Challenges
 - [ ] Battle Pass
+- [ ] GameSessions
+- [ ] ClientSettings
+- [ ] Easy Setup Guide
+- [x] Discord Bot
+- [ ] Save The World
+- [ ] Authentication 
+- [ ] Stats
+- [ ] Friends
+- [ ] Matchmaker ( most likely wont be added )
+- [ ] Vbucks on kill/win
+- [ ] Arena 
+- [ ] IP Bans
+- [ ] Gifting
+- [ ] Refunding 
+- [ ] Challenges / Quests

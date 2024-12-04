@@ -3,7 +3,7 @@ defmodule Astral.Database.Tables.Tokens do
   import Ecto.Changeset
 
   schema "Tokens" do
-    field :token, :string, primary_key: true
+    field :token, :string
     field :account_id, :string
     field :type, :string
 

@@ -2,8 +2,9 @@ defmodule Astral.Database.Tables.Accounts do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @primary_key {:account_id, :string, autogenerate: false}
+
   schema "Accounts" do
-    field :account_id, :string, primary_key: true
     field :email, :string
     field :password, :string
     field :username, :string

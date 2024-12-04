@@ -10,6 +10,7 @@ config :astral, Astral.Repo,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
+config :joken, default_signer: "astralsupersecretkey"
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #
@@ -58,7 +59,9 @@ config :astral, AstralWeb.Endpoint,
     patterns: [
       ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/astral_web/(controllers|live|components)/.*(ex|heex)$"
+      ~r"lib/astral_web/(controllers|live|components)/.*(ex|heex)$",
+      ~r"lib/astral/.*.*ex$",
+      ~r"lib/astral_discord/.*.*ex$",
     ]
   ]
 

@@ -19,12 +19,14 @@ defmodule Astral.Application do
       # Start to serve requests, typically the last entry
       AstralWeb.Endpoint
     ]
-
+    |> start_nostrum(Application.get_env(:astral, :nostrum, []))
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Astral.Supervisor]
     Supervisor.start_link(children, opts)
   end
+
+  defp start_nostrum(children, _config), do: children ++ [AstralDiscord.Consumer]
 
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.

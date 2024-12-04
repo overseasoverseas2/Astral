@@ -12,6 +12,5 @@ defmodule Astral.Database.Tables.Profiles do
     profile
     |> cast(attrs, [:account_id, :type, :revision])
     |> validate_required([:account_id, :type, :revision])
-    |> unique_constraint(:type, name: :profiles_pkey)
   end
 end

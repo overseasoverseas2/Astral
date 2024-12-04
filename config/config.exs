@@ -11,6 +11,9 @@ config :astral,
   ecto_repos: [Astral.Repo],
   generators: [timestamp_type: :utc_datetime]
 
+config :nostrum,
+  token: "your_token_here"
+
 # Configures the endpoint
 config :astral, AstralWeb.Endpoint,
   url: [host: "localhost"],

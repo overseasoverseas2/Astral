@@ -26,11 +26,22 @@ defmodule Astral.Repo.Migrations.CreateBaseTables do
     create unique_index(:Profiles, [:type])
 
     create table(:Tokens, primary_key: false) do
-      add :token, :string, primary_key: true
       add :account_id, :string
       add :type, :string
-
+      add :token, :string, null: false, default: ""
       timestamps()
     end
+
+    execute("DROP INDEX IF EXISTS Tokens_token_index")
+
+    alter table(:Tokens) do
+      remove :token
+    end
+
+    alter table(:Tokens) do
+      add :token, :string, null: false, default: ""
+    end
+
+    create unique_index(:Tokens, [:token], name: :tokens_token_index)
   end
 end

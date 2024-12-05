@@ -15,6 +15,34 @@ defmodule AstralWeb.DataController do
     })
   end
 
+  def event(conn, _params) do
+    file_path = Path.join(["assets", "arena.json"])
+
+    if File.exists?(file_path) do
+      case File.read(file_path) do
+        {:ok, content} ->
+          case Jason.decode(content) do
+            {:ok, arena} ->
+              json(conn, arena)
+
+            {:error, _reason} ->
+              conn
+              |> put_status(:internal_server_error)
+              |> json(%{error: "Invalid JSON format in arena.json"})
+          end
+
+        {:error, reason} ->
+          conn
+          |> put_status(:internal_server_error)
+          |> json(%{error: "Error reading arena.json: #{inspect(reason)}"})
+      end
+    else
+      conn
+      |> put_status(:not_found)
+      |> json(%{error: "arena.json not found"})
+    end
+  end
+
 def fortnite_game(conn, _params) do
      file_path = Path.join(["assets", "contentpages.json"])
 
@@ -57,11 +85,11 @@ def fortnite_game(conn, _params) do
 
  def privacy_settings(conn, %{"accountId" => _account_id}) do
     conn
-    |> put_status(200)       
+    |> put_status(200)
     |> json([])
   end
 
-  
+
  def content_controls(conn, %{"accountId" => _account_id}) do
     conn
     |> json([])
@@ -109,7 +137,7 @@ def fortnite_game(conn, _params) do
     |> json(%{})
   end
 
- 
+
   def waitingroom(conn, _params) do
     conn
     |> put_status(:no_content)

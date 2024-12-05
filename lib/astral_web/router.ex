@@ -22,6 +22,7 @@ defmodule AstralWeb.Router do
     get "/presence/api/v1/_/:accountId/settings/subscriptions", DataController, :subscriptions
     get "/fortnite/api/game/v2/privacy/account/:accountId", DataController, :privacy_settings
     get "/content-controls/:accountId", DataController, :content_controls
+    get "/api/v1/events/Fortnite/download/:accountId", DataController, :event
   end
 
   scope "/account/api", AstralWeb do
@@ -42,7 +43,7 @@ defmodule AstralWeb.Router do
   scope "/fortnite/api", AstralWeb do
     pipe_through :api
 
-   
+
     post "/game/v2/tryPlayOnPlatform/account/:accountId", DataController, :tryplayonplatform
     get "/versioncheck", DataController, :versioncheck
     get "/v2/versioncheck", DataController, :versioncheck
@@ -114,7 +115,7 @@ end
     get "/v1/:accountId/blocklist", DataController, :enabled
     get "/v1/:accountId/settings", DataController, :enabled
     get "/v1/:accountId/recent/fortnite", DataController, :enabled
-   
+
   end
 
 

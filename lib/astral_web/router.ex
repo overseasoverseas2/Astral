@@ -51,7 +51,7 @@ defmodule AstralWeb.Router do
     get "/cloudstorage/system", DataController, :access
     post "/game/v2/grant_access/*path", DataController, :access
     get "/game/v2/enabled_features", DataController, :access
-    get "/receipts/v1/account/:accountId/receipts", DataController, :receipts
+    get "/receipts/v1/account/:accountId/receipts", StorefrontController, :receipts
     put "/cloudstorage/user/:accountId/ClientSettings.Sav", DataController, :access
     get "/game/v2/twitch/*path", DataController, :access
     get "/calendar/v1/timeline", TimelineController, :timeline

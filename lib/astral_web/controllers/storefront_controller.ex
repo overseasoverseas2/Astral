@@ -15,7 +15,12 @@ defmodule AstralWeb.StorefrontController do
     end
   end
 
-
+ def receipts(conn, %{"accountId" => _account_id}) do
+    conn
+    |> put_status(200)      
+    |> json([])
+  end
+  
  def catalog(conn, _params) do
     file_path = Path.join(["assets", "catalog.json"])
 

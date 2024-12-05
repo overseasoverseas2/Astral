@@ -61,12 +61,7 @@ def fortnite_game(conn, _params) do
     |> json([])
   end
 
-   def receipts(conn, %{"accountId" => _account_id}) do
-    conn
-    |> put_status(200)      
-    |> json([])
-  end
-
+  
  def content_controls(conn, %{"accountId" => _account_id}) do
     conn
     |> json([])
@@ -114,12 +109,7 @@ def fortnite_game(conn, _params) do
     |> json(%{})
   end
 
-  def waiting_room(conn, _params) do
-    conn
-    |> put_status(:no_content)
-    |> json([])
-  end
-
+ 
   def waitingroom(conn, _params) do
     conn
     |> put_status(:no_content)

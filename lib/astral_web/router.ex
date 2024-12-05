@@ -73,7 +73,7 @@ defmodule AstralWeb.Router do
 
   scope "/fortnite/api/storefront/v2", AstralWeb do
     pipe_through :api
-
+    get "/catalog", StorefrontController, :catalog
     get "/keychain", StorefrontController, :keychain
   end
 
@@ -104,6 +104,18 @@ scope "/content/api/pages", AstralWeb do
 
   get "/fortnite-game", DataController, :fortnite_game
 end
+
+ scope "/friends/api", AstralWeb do
+    pipe_through :api
+
+    get "/public/blocklist/:accountId", DataController, :enabled
+    get "/public/friends/:accountId", DataController, :enabled
+    get "/public/list/fortnite/:accountId/recentPlayers", DataController, :enabled
+    get "/v1/:accountId/blocklist", DataController, :enabled
+    get "/v1/:accountId/settings", DataController, :enabled
+    get "/v1/:accountId/recent/fortnite", DataController, :enabled
+   
+  end
 
 
 
